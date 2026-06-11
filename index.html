@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Hazimweb Design || Studio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#050816;
+color:white;
+overflow-x:hidden;
+}
+
+/* BACKGROUND */
+
+body::before{
+content:'';
+position:fixed;
+width:500px;
+height:500px;
+background:#ffc10715;
+filter:blur(180px);
+top:-150px;
+right:-150px;
+z-index:-1;
+}
+
+body::after{
+content:'';
+position:fixed;
+width:500px;
+height:500px;
+background:#2563eb15;
+filter:blur(180px);
+bottom:-150px;
+left:-150px;
+z-index:-1;
+}
+
+/* LOADER */
+
+.loader{
+position:fixed;
+width:100%;
+height:100%;
+background:#050816;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:999999;
+}
+
+.loader img{
+width:90px;
+margin-bottom:20px;
+}
+
+.loader-text{
+color:#aaa;
+font-size:14px;
+}
+
+/* NAVBAR */
+
+.nav{
+position:fixed;
+top:20px;
+left:50%;
+transform:translateX(-50%);
+padding:14px 28px;
+display:flex;
+gap:25px;
+background:rgba(255,255,255,.05);
+backdrop-filter:blur(15px);
+border:1px solid rgba(255,255,255,.08);
+border-radius:50px;
+z-index:9999;
+}
+
+.nav div{
+cursor:pointer;
+font-size:14px;
+color:#bbb;
+transition:.3s;
+}
+
+.nav div:hover{
+color:#ffc107;
+}
+
+/* HERO */
+
+.hero{
+min-height:100vh;
+padding-top:220px;
+padding-left:20px;
+padding-right:20px;
+padding-bottom:80px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:flex-start;
+text-align:center;
+max-width:1200px;
+margin:auto;
+}
+
+.badge{
+padding:10px 20px;
+background:#ffc10715;
+border:1px solid #ffc10755;
+border-radius:50px;
+font-size:13px;
+color:#ffc107;
+margin-bottom:25px;
+}
+
+.hero h1{
+font-size:62px;
+font-weight:800;
+line-height:1.1;
+max-width:950px;
+margin-bottom:25px;
+}
+
+.hero span{
+color:#ffc107;
+}
+
+.hero p{
+max-width:750px;
+color:#bdbdbd;
+line-height:1.9;
+font-size:17px;
+}
+
+.hero-btns{
+display:flex;
+gap:15px;
+margin-top:35px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.btn{
+padding:16px 30px;
+border-radius:14px;
+font-weight:600;
+text-decoration:none;
+transition:.3s;
+}
+
+.btn-primary{
+background:#ffc107;
+color:#000;
+}
+
+.btn-secondary{
+border:1px solid #ffc107;
+color:#ffc107;
+}
+
+.btn:hover{
+transform:translateY(-5px);
+}
+
+.trust{
+margin-top:40px;
+color:#8f8f8f;
+line-height:2;
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+width:100%;
+max-width:900px;
+margin-top:60px;
+}
+
+.stat{
+background:rgba(255,255,255,.04);
+border:1px solid rgba(255,255,255,.08);
+padding:30px;
+border-radius:20px;
+}
+
+.stat h3{
+font-size:42px;
+color:#ffc107;
+margin-bottom:10px;
+}
+
+.stat p{
+color:#aaa;
+}
+
+/* SECTION */
+
+section{
+padding:100px 8%;
+}
+
+.section-title{
+font-size:42px;
+text-align:center;
+margin-bottom:25px;
+}
+
+.section-sub{
+text-align:center;
+max-width:800px;
+margin:auto;
+color:#aaa;
+line-height:1.9;
+margin-bottom:50px;
+}
+
+/* ABOUT */
+
+.about-card{
+max-width:1000px;
+margin:auto;
+padding:40px;
+background:rgba(255,255,255,.04);
+border:1px solid rgba(255,255,255,.08);
+border-radius:25px;
+text-align:center;
+}
+
+.about-card p{
+line-height:2;
+color:#bdbdbd;
+margin-bottom:20px;
+}
+
+/* PORTFOLIO */
+
+.portfolio-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
+}
+
+.port-card{
+background:#091122;
+border-radius:25px;
+overflow:hidden;
+border:1px solid rgba(255,255,255,.08);
+transition:.4s;
+}
+
+.port-card:hover{
+transform:translateY(-10px);
+}
+
+.port-card img{
+width:100%;
+height:240px;
+object-fit:cover;
+display:block;
+}
+
+.port-content{
+padding:25px;
+}
+
+.port-content h3{
+color:#ffc107;
+margin-bottom:15px;
+}
+
+.port-content p{
+color:#bdbdbd;
+line-height:1.8;
+font-size:14px;
+}
+
+.tags{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+margin-top:20px;
+}
+
+.tags span{
+background:#14233f;
+padding:7px 14px;
+border-radius:30px;
+font-size:12px;
+}
+
+/* PRICING */
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+}
+
+.card{
+background:linear-gradient(145deg,#0b132b,#1c2541);
+padding:30px;
+border-radius:20px;
+border:1px solid rgba(255,255,255,.1);
+cursor:pointer;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+border-color:#ffc107;
+}
+
+.price{
+font-size:30px;
+font-weight:800;
+color:#ffc107;
+}
+
+.desc{
+margin-top:10px;
+font-size:14px;
+color:#bbb;
+}
+
+/* POPUP */
+
+.popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+display:none;
+align-items:center;
+justify-content:center;
+background:rgba(0,0,0,.75);
+backdrop-filter:blur(10px);
+z-index:99999;
+}
+
+.popup-box{
+background:#08111f;
+padding:30px;
+border-radius:20px;
+max-width:600px;
+width:90%;
+max-height:80vh;
+overflow:auto;
+}
+
+.close{
+cursor:pointer;
+float:right;
+font-size:22px;
+}
+
+/* WA */
+
+.menu-btn{
+position:fixed;
+bottom:25px;
+right:25px;
+width:60px;
+height:60px;
+background:#25D366;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+z-index:99999;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.nav{
+gap:12px;
+padding:12px 18px;
+}
+
+.nav div{
+font-size:12px;
+}
+
+.hero{
+padding-top:180px;
+}
+
+.hero h1{
+font-size:36px;
+line-height:1.2;
+}
+
+.hero p{
+font-size:15px;
+}
+
+.stats{
+grid-template-columns:1fr;
+}
+
+.section-title{
+font-size:32px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="loader" id="loader">
+<img src="logo.png">
+<div class="loader-text" id="loaderText">Loading system...</div>
+</div>
+
+<div class="nav">
+<div onclick="scrollToSection('hero')">Home</div>
+<div onclick="scrollToSection('about')">Tentang</div>
+<div onclick="scrollToSection('portfolio')">Portfolio</div>
+<div onclick="scrollToSection('pricing')">Paket</div>
+<div onclick="scrollToSection('instagram')">Instagram</div>
+</div>
+
+<section class="hero" id="hero">
+
+<div class="badge">
+Website Modern • Fast Loading • Responsive
+</div>
+
+<h1>
+Website Profesional Yang Membuat
+<span>Bisnis Anda Lebih Dipercaya</span>
+</h1>
+
+<p>
+Bantu UMKM, personal branding, content creator, dan bisnis lokal
+tampil lebih profesional dengan website modern yang dirancang
+untuk meningkatkan kepercayaan pelanggan dan membantu proses closing.
+</p>
+
+<div class="hero-btns">
+
+<a href="#portfolio" class="btn btn-primary">
+Lihat Portfolio
+</a>
+
+<a href="https://wa.me/6287841232441" class="btn btn-secondary">
+Hubungi Saya
+</a>
+
+</div>
+
+<div class="trust">
+✔ Fast Loading<br>
+✔ Mobile Friendly<br>
+✔ Modern Design<br>
+✔ Fokus Trust & Closing
+</div>
+
+<div class="stats">
+
+<div class="stat">
+<h3>10+</h3>
+<p>Website Dibuat</p>
+</div>
+
+<div class="stat">
+<h3>100%</h3>
+<p>Garansi error</p>
+</div>
+
+<div class="stat">
+<h3>3 Hari</h3>
+<p>Rata-rata Pengerjaan</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="about">
+
+<h2 class="section-title">Tentang Hazimweb design || Studio</h2>
+
+<p class="section-sub">
+Website bukan hanya tampilan halaman. Melainkan website adalah alat yang membantu bisnis
+membangun kepercayaan, meningkatkan nilai personal branding, dan mempermudah calon pelanggan mengambil keputusan.
+</p>
+
+<div class="about-card">
+
+<p>
+Saya membantu UMKM, personal branding, content creator, dan bisnis lokal
+membangun citra profesional melalui website yang cepat, modern, dan nyaman digunakan.
+</p>
+
+<p>
+Setiap website dirancang dengan fokus pada pengalaman pengguna,
+kecepatan loading, desain premium, serta struktur yang membantu meningkatkan peluang closing.
+</p>
+
+<p>
+📧 hazimudin28@gmail.com
+<br><br>
+Location : Pemalang, Jawa Tengah
+</p>
+
+</div>
+
+</section>
+
+<section id="portfolio">
+
+<h2 class="section-title">Portfolio Website</h2>
+
+<p class="section-sub">
+Beberapa contoh website yang telah dibuat untuk membantu bisnis tampil lebih profesional dan terpercaya.
+</p>
+
+<div class="portfolio-grid">
+<!-- PORTFOLIO 1 -->
+
+<div class="port-card">
+<img src="porto1.jpg">
+<div class="port-content">
+<h3>Website Online Shop</h3>
+<p>
+Website toko online modern dengan katalog produk profesional,
+halaman produk yang rapi, tombol WhatsApp cepat,
+serta pengalaman pengguna yang membantu meningkatkan penjualan.
+</p>
+<div class="tags">
+<span>Online Shop</span>
+<span>Premium UI</span>
+<span>Mobile</span>
+<span>Fast</span>
+</div>
+</div>
+</div>
+
+<!-- PORTFOLIO 2 -->
+
+<div class="port-card">
+<img src="porto2.jpg">
+<div class="port-content">
+<h3>Website Link Bio</h3>
+<p>
+Solusi untuk personal branding, affiliate marketing,
+content creator, dan bisnis online agar semua informasi
+tersusun rapi dalam satu halaman profesional.
+</p>
+<div class="tags">
+<span>Branding</span>
+<span>Creator</span>
+<span>Modern</span>
+<span>Responsive</span>
+</div>
+</div>
+</div>
+
+<!-- PORTFOLIO 3 -->
+
+<div class="port-card">
+<img src="porto3.jpg">
+<div class="port-content">
+<h3>Landing Page Conversion</h3>
+<p>
+Dirancang menggunakan struktur marketing modern yang fokus
+pada trust, perhatian, dan peningkatan peluang closing.
+</p>
+<div class="tags">
+<span>Landing Page</span>
+<span>Marketing</span>
+<span>CTA</span>
+<span>Closing</span>
+</div>
+</div>
+</div>
+
+<!-- PORTFOLIO 4 -->
+
+<div class="port-card">
+<img src="porto4.jpg">
+<div class="port-content">
+<h3>Dashboard & Auto Closing</h3>
+<p>
+Menampilkan statistik bisnis, grafik performa,
+fitur WhatsApp otomatis, serta sistem yang membantu
+meningkatkan efisiensi bisnis.
+</p>
+<div class="tags">
+<span>Dashboard</span>
+<span>Analytics</span>
+<span>WhatsApp</span>
+<span>Automation</span>
+</div>
+</div>
+</div>
+
+<!-- PORTFOLIO 5 -->
+
+<div class="port-card">
+<img src="porto5.jpg">
+<div class="port-content">
+<h3>Animasi Premium</h3>
+<p>
+Website dengan animasi modern seperti zoom out,
+scroll animation, hover interaction,
+dan berbagai efek visual premium lainnya.
+</p>
+<div class="tags">
+<span>Animation</span>
+<span>Zoom</span>
+<span>Parallax</span>
+<span>Premium</span>
+</div>
+</div>
+</div>
+
+<!-- PORTFOLIO 6 -->
+
+<div class="port-card">
+<img src="porto6.jpg">
+<div class="port-content">
+<h3>Website Estetik Modern</h3>
+<p>
+Desain modern yang bersih, ringan,
+nyaman dilihat, dan dioptimalkan untuk kecepatan loading
+agar pengalaman pengguna lebih maksimal.
+</p>
+<div class="tags">
+<span>Elegant</span>
+<span>Modern</span>
+<span>Fast Loading</span>
+<span>Professional</span>
+</div>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- PRICING -->
+
+<section id="pricing">
+
+<h2 class="section-title">
+Paket Website
+</h2>
+
+<p class="section-sub">
+Pilih layanan sesuai kebutuhan bisnis Anda.
+</p>
+
+<div class="cards">
+
+<div class="card" onclick="openPopup('Link Bio',linkbio)">
+<h3>Link Bio</h3>
+<div class="price">Start Project</div>
+<div class="desc">Personal Branding & Jualan Online</div>
+</div>
+
+<div class="card" onclick="openPopup('Landing Page',landing)">
+<h3>Landing Page</h3>
+<div class="price">High Conversion</div>
+<div class="desc">Fokus Trust & Closing</div>
+</div>
+
+<div class="card" onclick="openPopup('Toko Online',shop)">
+<h3>Toko Online</h3>
+<div class="price">Full System</div>
+<div class="desc">Website Jualan Profesional</div>
+</div>
+
+<div class="card" onclick="openPopup('Undangan Digital',undangan)">
+<h3>Undangan Digital</h3>
+<div class="price">Elegant</div>
+<div class="desc">Undangan Website Premium</div>
+</div>
+
+<div class="card" onclick="openPopup('Custom Website',custom)">
+<h3>Custom Website</h3>
+<div class="price">DM Only</div>
+<div class="desc">Kebutuhan Khusus Bisnis</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- INSTAGRAM -->
+
+<section id="instagram">
+
+<h2 class="section-title">
+Instagram
+</h2>
+
+<p class="section-sub">
+Ikuti update terbaru dan hasil project melalui Instagram.
+</p>
+
+<div style="max-width:800px;margin:auto;text-align:center;">
+
+<img src="ss.jpg"
+style="
+width:100%;
+border-radius:25px;
+border:1px solid rgba(255,255,255,.08);
+">
+
+<br><br>
+
+<a
+href="https://www.instagram.com/haaaz.id?igsh=cGh6Zjc0NWxxem56"
+target="_blank"
+class="btn btn-primary">
+Lihat Selengkapnya
+</a>
+
+</div>
+
+</section>
+
+<!-- CTA -->
+
+<section>
+
+<div class="about-card">
+
+<h2 style="margin-bottom:20px;">
+Siap Membuat Website Profesional?
+</h2>
+
+<p>
+Bangun kesan pertama yang lebih kuat,
+tingkatkan kepercayaan pelanggan,
+dan tampil lebih profesional melalui website modern.
+</p>
+
+<br>
+
+<a href="https://wa.me/6287841232441"
+class="btn btn-primary">
+Konsultasi Sekarang
+</a>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer style="
+padding:80px 20px;
+text-align:center;
+border-top:1px solid rgba(255,255,255,.08);
+">
+
+<img src="logo.png"
+style="width:80px;margin-bottom:20px;">
+
+<h3>Hazim Web Studio</h3>
+
+<br>
+
+<p style="color:#aaa;">
+📧 hazimudin28@gmail.com
+</p>
+
+<p style="color:#aaa;">
+📍 Warungpring - Pemalang - Jawa Tengah
+</p>
+
+<br>
+
+<p style="font-size:13px;color:#777;line-height:1.8;">
+© 2026 Hazim Web Studio
+<br>
+All Rights Reserved
+</p>
+
+</footer>
+
+<!-- POPUP -->
+
+<div class="popup" id="popup">
+
+<div class="popup-box">
+
+<span class="close" onclick="closePopup()">✕</span>
+
+<h3 id="popupTitle"></h3>
+
+<br>
+
+<p id="popupText"></p>
+
+</div>
+
+</div>
+
+<!-- FLOAT WA -->
+
+<div class="menu-btn"
+onclick="window.open('https://wa.me/6287841232441')">
+
+<img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" width="30">
+
+</div>
+
+<script>
+
+/* LOADER */
+
+const texts=[
+"Loading system...",
+"Preparing portfolio...",
+"Optimizing UI...",
+"Building trust...",
+"Almost ready..."
+];
+
+let i=0;
+
+setInterval(()=>{
+
+const txt=document.getElementById("loaderText");
+
+if(txt){
+txt.innerText=texts[i%texts.length];
+i++;
+}
+
+},800);
+
+window.onload=()=>{
+
+setTimeout(()=>{
+
+const loader=document.getElementById("loader");
+
+if(loader){
+loader.style.display="none";
+}
+
+},1800);
+
+};
+
+/* NAVIGATION */
+
+function scrollToSection(id){
+
+document.getElementById(id).scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+/* POPUP DATA */
+
+const linkbio=`Halaman link bio profesional yang membantu meningkatkan kredibilitas akun sosial media dan memudahkan pengunjung menemukan semua informasi penting dalam satu tempat.`;
+
+const landing=`Landing page dirancang menggunakan struktur marketing modern yang fokus pada peningkatan trust, perhatian, dan peluang closing.`;
+
+const shop=`Website toko online profesional dengan tampilan premium, katalog produk, integrasi WhatsApp, dan pengalaman pengguna yang nyaman.`;
+
+const undangan=`Undangan digital modern berbasis website dengan fitur countdown, galeri foto, Google Maps, RSVP, buku tamu digital, ucapan online, dan musik otomatis.`;
+
+const custom=`Website dibuat sesuai kebutuhan bisnis Anda mulai dari company profile, dashboard, sistem internal, landing page custom, hingga kebutuhan digital lainnya.`;
+
+function openPopup(title,text){
+
+document.getElementById("popup").style.display="flex";
+
+document.getElementById("popupTitle").innerText=title;
+
+document.getElementById("popupText").innerText=text;
+
+document.body.style.overflow="hidden";
+
+}
+
+function closePopup(){
+
+document.getElementById("popup").style.display="none";
+
+document.body.style.overflow="auto";
+
+}
+
+document.getElementById("popup").addEventListener("click",function(e){
+
+if(e.target===this){
+closePopup();
+}
+
+});
+
+</script>
+
+</body>
+</html>
